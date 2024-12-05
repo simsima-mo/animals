@@ -12,7 +12,7 @@ CREATE TABLE utilisateurs (
 );
 
 CREATE TABLE produits (
-    produit_id INT PRIMARY KEY AUTO_INCREMENT,
+   produit_id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(255) NOT NULL,
     description TEXT,
     prix DECIMAL(10, 2) NOT NULL,
@@ -20,13 +20,14 @@ CREATE TABLE produits (
     categorie_id INT,
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     date_mise_jour TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (category_id) REFERENCES categories(category_id)
+    FOREIGN KEY (categorie_id) REFERENCES categorie(categorie_id)
 );
 CREATE TABLE categorie (
-   categorie_id INT PRIMARY KEY AUTO_INCREMENT,
-   nom VARCHAR(255) NOT NULL,
-   description TEXT
+    categorie_id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(255) NOT NULL,
+    description TEXT
 );
+SHOW CREATE TABLE produits;
 CREATE TABLE promotions (
     promotion_id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(255) NOT NULL,
@@ -45,7 +46,15 @@ CREATE TABLE avis (
     date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (produit_id) REFERENCES produits(produit_id)
 );
-CREATE TABLE images (
+CREATE TABLE imageschat (
+    image_id INT PRIMARY KEY AUTO_INCREMENT,
+    produit_id INT,
+    url VARCHAR(255) NOT NULL,
+    alt_text VARCHAR(255),
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (produit_id) REFERENCES produits(produit_id)
+);
+CREATE TABLE imageschien (
     image_id INT PRIMARY KEY AUTO_INCREMENT,
     produit_id INT,
     url VARCHAR(255) NOT NULL,
@@ -95,8 +104,8 @@ CREATE TABLE suivi_livraison (
 INSERT INTO Produit (Nom, Description, Prix, Quantite_en_stock, Categorie, Images, Poids, Dimensions, Marque)
 VALUES
 -- Accessoires
-('Collier Réfléchissant Chat', 'Collier ajustable et réfléchissant pour la sécurité du chat', 15.99, 50, 'Accessoire', 'collier_reflechissant_chat.jpg', 0.1, '20x2x2 cm', 'SafePet'),
-('Fontaine à Eau', 'Fontaine à eau automatique pour chats', 39.99, 30, 'Accessoire', 'fontaine_eau_chat.jpg', 1.5, '30x20x20 cm', 'AquaPet'),
+('Collier Réfléchissant Chat', 'Collier ajustable et réfléchissant pour la sécurité du chat', 15.99, 50, 'Accessoire', '"C:\Users\ikbal\OneDrive\Bureau\PROJET_ANIMALIS\IMAGE_CHAT\img1.jpg"', 0.1, '20x2x2 cm', 'SafePet'),
+('Fontaine à Eau', 'Fontaine à eau automatique pour chats', 39.99, 30, 'Accessoire', '', 1.5, '30x20x20 cm', 'AquaPet'),
 ('Arbre à Chat Deluxe', 'Grand arbre à chat avec griffoir et niches', 119.99, 15, 'Accessoire', 'arbre_chat_deluxe.jpg', 15.0, '120x60x60 cm', 'PetKing'),
 ('Sac de Transport Chat', 'Sac de transport confortable pour voyages', 34.99, 40, 'Accessoire', 'sac_transport_chat.jpg', 1.0, '45x30x25 cm', 'TravelPet'),
 ('Litière Autonettoyante', 'Litière pour chat autonettoyante', 199.99, 10, 'Accessoire', 'litiere_autonettoyante.jpg', 5.0, '60x40x40 cm', 'CleanTech'),
@@ -126,3 +135,5 @@ VALUES
 ('Croquettes Junior', 'Croquettes pour chatons en croissance', 22.99, 80, 'Nourriture', 'croquettes_junior.jpg', 1.5, '30x20x10 cm', 'HappyKitten'),
 ('Mix de Saveurs', 'Assortiment de pâtées pour chat', 15.99, 60, 'Nourriture', 'mix_saveurs_chat.jpg', 3.0, '10 unités', 'FlavorMix');
 
+ALTER TABLE produits ADD image_url VARCHAR(255);
+SHOW CREATE TABLE produits;
