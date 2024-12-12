@@ -27,7 +27,7 @@ const Cart = ({ cart, setCart }) => {
     }
     setCart(newCart);
   };
-
+  
   return (
     <div className="cart-page">
       <h2>Mon Panier</h2>
