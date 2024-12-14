@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: transparent; /* Background is now handled by App.js */
+  color: #f8f9fa; /* Ensure text is readable */
+}
+
+.content {
+  padding: 20px;
+}
+
+/* Dark mode adjustments (optional) */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
