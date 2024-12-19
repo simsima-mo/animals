@@ -1,0 +1,44 @@
+.image-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+
+.slider-inner {
+  display: flex;
+  width: 100%;
+  transition: transform 1s ease;
+}
+
+.slider-image {
+  min-width: 100%; /* Ensure only one image is visible */
+  height: 100vh;
+  
+}
+
+
+.slider-buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+.slider-button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 8px 7px 7px rgba(0, 0, 0, 0.2);
+}
+
+.slider-button:hover {
+  background-color: #ffc0cb;
+}

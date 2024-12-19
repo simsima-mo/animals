@@ -1,0 +1,94 @@
+.cart-page {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f0f8; /* Rose clair pour le fond */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: purple; /* Violet doux */
+}
+
+p {
+  margin: 5px 0;
+  color: black; /* Violet doux pour le texte */
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-item-info img {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item-actions button {
+  background-color: black; /* Rose vif pour les boutons */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-item-actions button:hover {
+  background-color: pink; /* Rose plus foncé */
+}
+
+.cart-item-actions span {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: black; /* Violet doux pour les prix */
+}
+
+.cart-total {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: purple; /* Violet doux pour total */
+}
+
+.checkout-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: black; /* Violet pour le bouton de checkout */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+  background-color: pink; /* Violet plus foncé */
+}
+
+.cart-page p {
+  text-align: center;
+  color: black; /* Violet doux */
+}

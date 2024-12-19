@@ -1,0 +1,337 @@
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container */
+.container {
+  padding: 20px;
+}
+
+/* Notification */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: violet;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+/* Search Bar */
+.oms {
+  width: 50%;
+  padding: 10px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Category Buttons */
+.btn {
+  border: 1px solid pink;
+  padding: 12px 24px;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  background-color: violet;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.5);
+  transition: all 0.3s ease;
+}
+
+
+.btn:hover {
+  background-color: pink;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.7);
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(238, 130, 238, 0.7);
+}
+
+/* Products List */
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Product Card */
+.product-card {
+  background: #ffffff;
+  padding: 20px;
+  border: 2px solid pink;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(238, 130, 238, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 240px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(238, 130, 238, 0.3);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.product-card h3 {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.5;
+}
+
+.product-card button {
+  background-color: violet;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: pink;
+  transform: scale(1.05);
+}
+
+/* Product Modal */
+.product-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border: 5px solid black;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal-content img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-details {
+  font-size: 18px;
+  color: #333;
+}
+
+.modal-details h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.modal-details p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.modal-details .price {
+  font-size: 22px;
+  font-weight: bold;
+  color: violet;
+  margin-top: 15px;
+}
+
+.modal-details button {
+  margin-top: 20px;
+  background-color: pink;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-details button:hover {
+  background-color: violet;
+  transform: scale(1.05);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.close-btn:hover {
+  background-color: darkred;
+}
+
+/* Cart Styles */
+.cart {
+  background: pink;
+  padding: 15px;
+  border: 1px solid violet;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  z-index: 9999;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(238, 130, 238, 0.3);
+}
+
+.cart-item button {
+  background: violet;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.cart-item button:hover {
+  background: pink;
+}
+
+.cart .checkout-button {
+  background-color: violet;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cart .checkout-button:hover {
+  background-color: pink;
+}
+
+.arrow-button {
+  background-color: pink;
+  color: violet;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10000;
+  transition: all 0.3s ease;
+}
+/* Product Details Card */
+.product-details-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1000;
+}
+
+.product-details-card img {
+  width: 100px; /* Taille de l'image */
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 8px; /* Optionnel pour arrondir les bords */
+}
+
+.product-details-card h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: violet;
+}
+
+.product-details-card p {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.product-details-card .price {
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+  margin: 15px 0;
+}
+
+.product-details-card button {
+  background-color: pink;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-details-card button:hover {
+  background-color: violet;
+}
+
+.product-page {
+  display: flex;
+  flex-direction: column; /* Pour empiler les éléments verticalement */
+  align-items: center; /* Centre les éléments horizontalement */
+  justify-content: center; /* Centre les éléments verticalement (utile si la hauteur de la page est grande) */
+  min-height: 100vh; /* Occupe toute la hauteur de la page */
+  text-align: center; /* Pour centrer le texte de l'en-tête */
+}
