@@ -38,31 +38,32 @@ const ProductsDog = ({ cart, setCart }) => {
 
   // Product list
   const products = [
-    { id: 1, name: "Collier Réfléchissant Chat", category: "Accessoires", price: "15.99dh", description: "Collier ajustable et réfléchissant pour la sécurité du chat", image: collierImage },
-    { id: 2, name: "Fontaine à Eau", category: "Accessoires", price: "39.99dh", description: "Fontaine à eau automatique pour chats", image: fontaineImage },
-    { id: 3, name: "Arbre à Chat Deluxe", category: "Accessoires", price: "119.99dh", description: "Grand arbre à chat avec griffoir et niches", image: panierDeluxe },
-    { id: 4, name: "Sac de Transport Chat", category: "Accessoires", price: "34.99dh", description: "Sac de transport confortable pour voyages", image: sacTransportImage },
-    { id: 5, name: "Litière Autonettoyante", category: "Accessoires", price: "199.99dh", description: "Litière pour chat autonettoyante", image: distributeurCroquettes },
-    { id: 6, name: "Harnais pour Chat", category: "Accessoires", price: "17.99dh", description: "Harnais réglable avec laisse", image: harnaisImage },
-    { id: 7, name: "Laser pour Chat", category: "Jeux", price: "25.99dh", description: "Jouet interactif avec laser automatique", image: balleResistante },
-    { id: 8, name: "Souris en Peluche", category: "Jeux", price: "7.99dh", description: "Jouet en forme de souris avec catnip", image: cordeNoeuds },
-    { id: 9, name: "Balle Distributeur de Nourriture", category: "Jeux", price: "14.99dh", description: "Balle interactive pour distribuer des friandises", image: balleDistributeurImage },
-    { id: 10, name: "Tunnel de Jeu XXL", category: "Jeux", price: "29.99dh", description: "Tunnel pour chat avec plusieurs entrées", image: tunnelImage },
-    { id: 11, name: "Jouet Suspendu", category: "Jeux", price: "12.99dh", description: "Jouet à suspendre pour stimuler le jeu", image: anneauCaoutchouc },
-    { id: 12, name: "Cerceau de Jeu", category: "Jeux", price: "18.99dh", description: "Cerceau d'agilité pour chats", image: frisbeeSouple },
-    { id: 13, name: "Shampooing Hydratant Chat", category: "Soins", price: "13.99dh", description: "Shampooing pour poils secs et sensibles", image: shampooingImage },
-    { id: 14, name: "Spray Anti-Stress", category: "Soins", price: "19.99dh", description: "Spray aux phéromones pour calmer les chats", image: sprayImage },
-    { id: 15, name: "Lingettes Nettoyantes", category: "Soins", price: "8.99dh", description: "Lingettes pour nettoyer le pelage des chats", image: lingettesImage },
-    { id: 16, name: "Peigne Anti-Noeuds", category: "Soins", price: "10.99dh", description: "Peigne pour démêler les poils", image: brosseDemelante },
-    { id: 17, name: "Coupe-Griffes", category: "Soins", price: "6.99dh", description: "Coupe-griffes avec sécurité", image: coupeGriffesImage },
-    { id: 18, name: "Vitamines pour Chat", category: "Soins", price: "14.99dh", description: "Supplément alimentaire pour la santé du chat", image: vitaminesImage },
-    { id: 19, name: "Croquettes Hypoallergéniques", category: "Nourriture", price: "29.99dh", description: "Croquettes pour chats sensibles", image: croquettesImage },
-    { id: 20, name: "Pâtée au Poulet", category: "Nourriture", price: "2.99dh", description: "Pâtée pour chat goût poulet", image: pateImage },
-    { id: 21, name: "Friandises au Thon", category: "Nourriture", price: "6.49dh", description: "Friandises pour chat riches en protéines", image: friandisesImage },
-    { id: 22, name: "Mousse de Saumon", category: "Nourriture", price: "3.49dh", description: "Nourriture humide pour chat au saumon", image: barresPoulet },
-    { id: 23, name: "Croquettes Junior", category: "Nourriture", price: "22.99dh", description: "Croquettes pour chatons en croissance", image: croquettesJuniorImage },
-    { id: 24, name: "Mix de Saveurs", category: "Nourriture", price: "15.99dh", description: "Assortiment de pâtées pour chat", image: packPatees },
-  ];
+    { id: 1, name: "collier réfléchissant chien", category: "Accessoires", price: "15.99dh", description: "Un collier ajustable conçu pour la sécurité de votre chien, doté d'une bande réfléchissante pour une visibilité accrue.", image: collierImage },
+    { id: 2, name: "fontaine eau chien", category: "Accessoires", price: "39.99dh", description: "Fontaine automatique qui fournit une eau fraîche et propre en continu pour votre chien.", image: fontaineImage },
+    { id: 3, name: "panier deluxe chien", category: "Accessoires", price: "119.99dh", description: "Panier spacieux et confortable offrant un espace de repos luxueux pour votre chien.", image: panierDeluxe },
+    { id: 4, name: "sac de transport chien", category: "Accessoires", price: "34.99dh", description: "Un sac ergonomique et pratique pour transporter votre chien en toute sécurité lors de vos déplacements.", image: sacTransportImage },
+    { id: 5, name: "distributeur croquettes chien", category: "Accessoires", price: "199.99dh", description: "Appareil innovant pour distribuer automatiquement des croquettes à votre chien, parfait pour les journées chargées.", image: distributeurCroquettes },
+    { id: 6, name: "Harnais pour chien", category: "Accessoires", price: "17.99dh", description: "Harnais réglable et confortable avec une laisse assortie, idéal pour les promenades sécurisées.", image: harnaisImage },
+    { id: 7, name: "balle résistante de chien", category: "Jeux", price: "25.99dh", description: "Jouet en forme de balle conçu pour résister aux mâchoires puissantes de votre chien.", image: balleResistante },
+    { id: 8, name: "corde nœuds pour chien", category: "Jeux", price: "7.99dh", description: "Jouet en corde avec des nœuds robustes pour permettre à votre chien de mâchouiller et s’amuser.", image: cordeNoeuds },
+    { id: 9, name: "Balle Distributeur de Nourriture pour chien", category: "Jeux", price: "14.99dh", description: "Une balle interactive qui distribue des friandises pour stimuler mentalement votre chien.", image: balleDistributeurImage },
+    { id: 10, name: "tunnel agilité chien", category: "Jeux", price: "29.99dh", description: "Un tunnel conçu pour les exercices d’agilité et les jeux interactifs avec votre chien.", image: tunnelImage },
+    { id: 11, name: "anneau caoutchouc chien", category: "Jeux", price: "12.99dh", description: "Jouet en caoutchouc durable idéal pour les jeux de lancer et d’attraper.", image: anneauCaoutchouc },
+    { id: 12, name: "frisbee souple chien", category: "Jeux", price: "18.99dh", description: "Frisbee flexible et léger, parfait pour les séances de jeu en plein air.", image: frisbeeSouple },
+    { id: 13, name: "shampooing antiparasitaire chien", category: "Soins", price: "13.99dh", description: "Shampooing conçu pour éliminer les parasites et protéger le pelage de votre chien.", image: shampooingImage },
+    { id: 14, name: "spray calmant chien", category: "Soins", price: "19.99dh", description: "Spray apaisant à base de phéromones pour réduire le stress et favoriser la relaxation chez votre chien.", image: sprayImage },
+    { id: 15, name: "lingettes chien", category: "Soins", price: "8.99dh", description: "Lingettes douces et pratiques pour nettoyer rapidement et efficacement le pelage de votre chien.", image: lingettesImage },
+    { id: 16, name: "brosse démêlante chien", category: "Soins", price: "10.99dh", description: "Brosse ergonomique pour démêler les poils et maintenir un pelage soyeux.", image: brosseDemelante },
+    { id: 17, name: "Coupe Griffes", category: "Soins", price: "6.99dh", description: "Outil de coupe précis avec système de sécurité pour raccourcir les griffes de votre chien en toute sécurité.", image: coupeGriffesImage },
+    { id: 18, name: "compléments chien", category: "Soins", price: "14.99dh", description: "Suppléments alimentaires spécialement formulés pour améliorer la santé et la vitalité de votre chien.", image: vitaminesImage },
+    { id: 19, name: "croquettes senior chien", category: "Nourriture", price: "29.99dh", description: "Nourriture sèche adaptée aux besoins nutritionnels des chiens âgés.", image: croquettesImage },
+    { id: 20, name: "pâtée bœuf chien", category: "Nourriture", price: "2.99dh", description: "Délicieuse pâtée au bœuf, parfaite pour offrir un repas équilibré et savoureux à votre chien.", image: pateImage },
+    { id: 21, name: "friandises dentaires chien", category: "Nourriture", price: "6.49dh", description: "Friandises conçues pour nettoyer les dents et rafraîchir l’haleine de votre chien tout en le régalant.", image: friandisesImage },
+    { id: 22, name: "barres poulet chien", category: "Nourriture", price: "3.49dh", description: "Snacks à base de poulet, parfaits comme récompenses ou encas sains pour votre chien.", image: barresPoulet },
+    { id: 23, name: "croquettes junior chien", category: "Nourriture", price: "22.99dh", description: "Croquettes spécialement formulées pour soutenir la croissance et le développement des chiots.", image: croquettesJuniorImage },
+    { id: 24, name: "pack pâtées variées chien", category: "Nourriture", price: "15.99dh", description: "Assortiment de pâtées aux différentes saveurs pour varier les repas de votre chien.", image: packPatees }
+];
+
 
  // Filter products by search query and selected category
  const filteredProducts = products.filter(
