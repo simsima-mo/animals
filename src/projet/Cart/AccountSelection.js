@@ -57,10 +57,10 @@ const AccountSelection = ({ cart }) => {
           }
         `}
       </style>
-      <h2 style={{color : "#f39c12"}}>Create an account or log in</h2>
-      <p>Please login or create an account to continue to payment</p>
+      <h2 style={{color : "#f39c12"}}>Créer un compte ou se connecter</h2>
+      <p>Veuillez vous connecter ou créer un compte pour continuer le paiement</p>
       <button className="account-selection-button" onClick={handleLogin}>
-        Go to login
+      Allez vous connecter
       </button>
     </div>
   );

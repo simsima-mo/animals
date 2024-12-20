@@ -279,7 +279,7 @@ const AuthPage = () => {
         </>
       ) : (
         <form onSubmit={handleForgotPasswordSubmit}>
-          <h2>Forgot Password?</h2>
+          <h2>Mot de passe oublié?</h2>
           <p>
           Aucun problème – veuillez saisir l’adresse e-mail associée à votre compte et nous vous enverrons 
           un lien pour réinitialiser votre mot de passe.
