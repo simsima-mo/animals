@@ -335,3 +335,20 @@ body {
   min-height: 100vh; /* Occupe toute la hauteur de la page */
   text-align: center; /* Pour centrer le texte de l'en-tête */
 }
+
+/* Product Card Images */
+.product-card img {
+  width: 200px; /* Largeur fixe */
+  height: 200px; /* Hauteur fixe */
+  object-fit: cover; /* Assure que l'image couvre le conteneur sans déformation */
+  border-radius: 12px; /* Optionnel pour arrondir les bords */
+}
+
+/* Product Details Card Images */
+.product-details-card img {
+  width: 200px; /* Largeur fixe */
+  height: 200px; /* Hauteur fixe */
+  object-fit: cover; /* Assure que l'image couvre le conteneur sans déformation */
+  margin-bottom: 15px;
+  border-radius: 8px; /* Optionnel pour arrondir les bords */
+}

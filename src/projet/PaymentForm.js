@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./PaymentForm.css";
 const PaymentForm = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
@@ -13,8 +13,9 @@ const PaymentForm = () => {
 
   return (
     <div className="payment-form">
+      <div className="payment-container">
       <h2>Informations de Paiement</h2>
-      <form onSubmit={handlePayment}>
+      <form onSubmit={handlePayment} className="payment-form">
         <label>
           Numéro de carte
           <input
@@ -43,8 +44,10 @@ const PaymentForm = () => {
             required
           />
         </label>
-        <button type="submit">Payer</button>
+        <button type="submit" className="payment-button">Payer</button>
       </form>
+      </div>
+      
     </div>
   );
 };

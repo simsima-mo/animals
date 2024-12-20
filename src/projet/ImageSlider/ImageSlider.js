@@ -23,13 +23,13 @@ const ImageSlider = ({ images }) => {
           onClick={() => navigate('/ProductsCat', { state: { category: 'cat' } })}
           className="slider-button"
         >
-          <FontAwesomeIcon icon={faCat} /> Cat Products
+          <FontAwesomeIcon icon={faCat} /> produits chat 
         </button>
         <button
           onClick={() => navigate('/ProductsDog', { state: { category: 'dog' } })}
           className="slider-button"
         >
-          <FontAwesomeIcon icon={faDog} /> Dog Products
+          <FontAwesomeIcon icon={faDog} /> produits chien
         </button>
       </div>
       <div

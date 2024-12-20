@@ -81,13 +81,6 @@ const AuthPage = () => {
     const password = e.target.password.value.trim();
     const errors = {};
 
-    try {
-      // const response = await axios.post("http://localhost/api_dog.php", {name, email, adresse})
-      navigate("/payment")
-      // console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
 
     if (!firstName) {
       errors.firstName = "First name is required.";
@@ -109,8 +102,20 @@ const AuthPage = () => {
     setFormErrors(errors);
 
     if (Object.keys(errors).length === 0) {
+      
+    try {
+      // const response = await axios.post("http://localhost/api_dog.php", {name, email, adresse})
+      navigate("/payment")
       alert("Account created successfully!");
+      // console.log(response.data);
+    } catch (error) {
+      console.log(error);
     }
+      
+    } else {
+      // Si des erreurs sont présentes, informer l'utilisateur
+      alert("Please fill in all required fields correctly.");
+  }
   };
 
   const inputStyle = {
@@ -121,9 +126,7 @@ const AuthPage = () => {
     borderRadius: "4px",
   };
 
-  const handleLogin = () => {
-    navigate("/payment");
-  };
+ 
 
   const errorStyle = { color: "red", fontSize: "0.9em", marginTop: "5px" };
 
@@ -180,7 +183,7 @@ const AuthPage = () => {
                 
               }}
             >
-              Create an account
+              crée un compt
             </button>
           </div>
 
@@ -268,7 +271,7 @@ const AuthPage = () => {
                 </p>
                 {formErrors.password && <p style={errorStyle}>{formErrors.password}</p>}
               </div>
-              <button type="submit" style={buttonStyle}  onClick={handleLogin}  >
+              <button type="submit" style={buttonStyle}   >
                 Sign Me Up
               </button>
             </form>

@@ -1,0 +1,184 @@
+/* Importer une police élégante */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Container principal pour la page de paiement */
+.payment-page {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Conteneur central avec style de carte */
+.payment-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 100px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin-left: 30%; /* Centrage à 30% de la largeur de l'écran */
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Animation pour l'apparition du conteneur */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Titre de la page */
+.payment-container h2 {
+  color: violet;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Formulaire de paiement */
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Champs de saisie */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Fond clair pour les champs */
+  transition: all 0.3s ease;
+}
+
+/* Effet de focus et de survol sur les champs */
+.input-field:focus {
+  border-color: violet;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(238, 130, 238, 0.4);
+  outline: none;
+}
+
+/* Validation des champs invalides */
+.input-field:invalid {
+  border-color: red;
+}
+
+/* Style du bouton de paiement */
+.payment-button {
+  background-color: violet;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(238, 130, 238, 0.3);
+}
+
+/* Animation et effets du bouton "Payer" */
+.payment-button:hover {
+  background-color: pink;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(238, 130, 238, 0.3);
+}
+
+.payment-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(238, 130, 238, 0.7);
+}
+
+.payment-button:active {
+  transform: scale(0.98);
+}
+
+/* Police et taille des éléments */
+.payment-container h2,
+.payment-form label,
+.payment-button {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+}
+
+.payment-form label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Gestion des marges et espacement */
+.payment-container {
+  padding: 40px 30px;
+}
+
+/* Conteneur du formulaire */
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Responsive Design - Adaptation pour les petits écrans */
+@media (max-width: 768px) {
+  .payment-container {
+    padding: 20px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto; /* Centrer horizontalement sur les tablettes et écrans plus petits */
+  }
+
+  .payment-container h2 {
+    font-size: 20px;
+  }
+
+  .payment-button {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+
+  .input-field {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Responsive Design - Adaptation pour les très petits écrans */
+@media (max-width: 480px) {
+  .payment-container {
+    padding: 15px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto; /* Centrer horizontalement sur les smartphones */
+  }
+
+  .payment-container h2 {
+    font-size: 18px;
+  }
+
+  .input-field {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .payment-button {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}

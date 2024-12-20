@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Style.css';
-
+import { useNavigate } from "react-router-dom";
 // Product images
 const collierImage = "/assets/Collier Réfléchissant Chat.jpg";
 const fontaineImage = "/assets/fontaine_eau_chat.jpg";
@@ -35,6 +35,8 @@ const ProductsDog = ({ cart, setCart }) => {
   const [notification, setNotification] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null); // Track selected product for details view
+  const navigate = useNavigate()
+  
 
   // Product list
   const products = [
@@ -76,6 +78,10 @@ const ProductsDog = ({ cart, setCart }) => {
 const handleCategoryChange = (category) => {
   setSelectedCategory(category);
 };
+
+const handleNavigate = () => {
+  navigate("/productsDog")
+}
 
 // Handle adding product to cart
 const handleAddToCart = (product) => {
@@ -156,8 +162,20 @@ return (
         </button>
       </div>
     )}
+    {/* Button for "Produits Chien" */}
+    <div className="products-dog-button-container">
+        <button 
+          className="btn" 
+          onClick={handleNavigate} // Exemple d'action
+        >
+           Produits Chien
+        </button>
+      </div>
+
   </div>
+  
 );
+
 };
 
 export default ProductsDog;
