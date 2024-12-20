@@ -169,7 +169,7 @@ const AuthPage = () => {
                 color: isLogin ? "#fff" : "#333",
               }}
             >
-              Login Me
+              Connectez-moi
             </button>
             <button
               onClick={() => {
@@ -189,18 +189,18 @@ const AuthPage = () => {
 
           {isLogin ? (
             <form onSubmit={handleLoginSubmit}>
-              <h2>I am already a customer </h2>
+              <h2>Je suis déjà client</h2>
               <div style={{ marginBottom: "15px" }}>
-                <label>Email Address</label>
-                <input name="email" type="email" placeholder="Email Address" style={inputStyle} />
+                <label>Adresse email</label>
+                <input name="email" type="email" placeholder="Adresse email" style={inputStyle} />
                 {formErrors.email && <p style={errorStyle}>{formErrors.email}</p>}
               </div>
               <div style={{ marginBottom: "15px", position: "relative" }}>
-                <label>Password</label>
+                <label>Mot de passe</label>
                 <input
                   name="password"
                   type={passwordVisible ? "text" : "password"}
-                  placeholder="Password"
+                  placeholder="Mot de passe"
                   style={inputStyle}
                 />
                 <span
@@ -218,39 +218,39 @@ const AuthPage = () => {
                 {formErrors.password && <p style={errorStyle}>{formErrors.password}</p>}
               </div>
               <button type="submit" style={buttonStyle}>
-                Login Me
+              Connectez-moi
               </button>
               <p
                 style={{ textAlign: "center", marginTop: "10px", cursor: "pointer", color: "purple" }}
                 onClick={() => setIsForgotPassword(true)}
               >
-                Forgot your password?
+                Mot de passe oublié?
               </p>
             </form>
           ) : (
             <form onSubmit={handleSignUpSubmit}>
-              <h2>New customer</h2>
+              <h2>Nouveau client</h2>
               <div style={{ marginBottom: "15px" }}>
-                <label>First Name</label>
-                <input name="firstName" type="text" placeholder="First Name" style={inputStyle} />
+                <label>Prénom</label>
+                <input name="firstName" type="text" placeholder="Prénom" style={inputStyle} />
                 {formErrors.firstName && <p style={errorStyle}>{formErrors.firstName}</p>}
               </div>
               <div style={{ marginBottom: "15px" }}>
-                <label>Last Name</label>
-                <input name="lastName" type="text" placeholder="Last Name" style={inputStyle} />
+                <label>Nom de famille</label>
+                <input name="lastName" type="text" placeholder="Nom de famille" style={inputStyle} />
                 {formErrors.lastName && <p style={errorStyle}>{formErrors.lastName}</p>}
               </div>
               <div style={{ marginBottom: "15px" }}>
-                <label>Email Address</label>
-                <input name="email" type="email" placeholder="Email Address" style={inputStyle} />
+                <label>Adresse email</label>
+                <input name="email" type="email" placeholder="Adresse email" style={inputStyle} />
                 {formErrors.email && <p style={errorStyle}>{formErrors.email}</p>}
               </div>
               <div style={{ marginBottom: "15px", position: "relative" }}>
-                <label>Password</label>
+                <label>Mot de passe</label>
                 <input
                   name="password"
                   type={passwordVisible ? "text" : "password"}
-                  placeholder="Password"
+                  placeholder="Mot de passe"
                   style={inputStyle}
                 />
                 <span
@@ -266,13 +266,13 @@ const AuthPage = () => {
                   <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
                 </span>
                 <p style={infoStyle}>
-                  8 characters minimum. Must include at least one uppercase letter, one lowercase
-                  letter, one digit, and one special character.
+                8 caractères minimum. Doit inclure au moins une lettre majuscule, une lettre minuscule,
+                 un chiffre et un caractère spécial.
                 </p>
                 {formErrors.password && <p style={errorStyle}>{formErrors.password}</p>}
               </div>
               <button type="submit" style={buttonStyle}   >
-                Sign Me Up
+              Inscrivez-moi
               </button>
             </form>
           )}
@@ -281,22 +281,22 @@ const AuthPage = () => {
         <form onSubmit={handleForgotPasswordSubmit}>
           <h2>Forgot Password?</h2>
           <p>
-            No problem – please enter the email address associated with your account, and we will
-            send you a link to reset your password.
+          Aucun problème – veuillez saisir l’adresse e-mail associée à votre compte et nous vous enverrons 
+          un lien pour réinitialiser votre mot de passe.
           </p>
           <div style={{ marginBottom: "15px" }}>
-            <label>Email Address</label>
-            <input name="email" type="email" placeholder="Email Address" style={inputStyle} />
+            <label>Adresse email</label>
+            <input name="email" type="email" placeholder="Adresse email" style={inputStyle} />
             {formErrors.email && <p style={errorStyle}>{formErrors.email}</p>}
           </div>
           <button type="submit" style={buttonStyle}>
-            Reset Password
+          Réinitialiser le mot de passe
           </button>
           <p
             style={{ textAlign: "center", marginTop: "10px", cursor: "pointer", color: "purple" }}
             onClick={() => setIsForgotPassword(false)}
           >
-            &laquo; Back to Login
+            &laquo; Retour à la connexion
           </p>
         </form>
       )}

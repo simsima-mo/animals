@@ -7,19 +7,19 @@ function Categories() {
       img: 'Alimentation.jpg',
       title: 'High-Quality Food',
       description:
-        'We offer a range of balanced and nutritious food tailored to the specific needs of cats and dogs. Rich in essential nutrients, our selection helps maintain their energy, immune system, and overall health. Quality nutrition is the foundation of a long and healthy life.',
+        'Nous proposons une gamme d/aliments équilibrés et nutritifs adaptés aux besoins spécifiques des chats et des chiens. Riche en nutriments essentiels, notre sélection contribue à maintenir leur énergie, leur système immunitaire et leur santé générale. Une nutrition de qualité est la base d/une vie longue et saine.',
     },
     {
       img: 'les joux.jpg',
       title: 'Care Products',
       description:
-        'Take care of your pets with our specially designed products for their hygiene and well-being. From gentle shampoos to effective brushes, our care items help preserve the beauty of their coat and their health. Regular care routines enhance their comfort and quality of life.',
+        'Prenez soin de vos animaux de compagnie avec nos produits spécialement conçus pour leur hygiène et leur bien-être. Du shampoing doux à la brosse efficace, nos articles de soins contribuent à préserver la beauté de leur pelage et leur santé. Des routines de soins régulières améliorent leur confort et leur qualité de vie.',
     },
     {
       img: 'acces.jpg',
       title: 'Accessories',
       description:
-        'Our accessories provide comfort and entertainment for your pets. From cozy beds and stimulating toys to stylish collars, each product is designed to meet their needs. They promote an active and joyful life while strengthening your bond with your furry companions.',
+        'Nos accessoires offrent confort et divertissement à vos animaux de compagnie. Des lits douillets aux jouets stimulants en passant par les colliers élégants, chaque produit est conçu pour répondre à leurs besoins. Ils favorisent une vie active et joyeuse tout en renforçant votre lien avec vos compagnons à quatre pattes.',
     },
   ];
 
@@ -44,7 +44,7 @@ function Categories() {
             letterSpacing: '1px',
           }}
         >
-          Our Products
+          Nos Produits
         </h2>
         <div className="row justify-content-center">
           {categories.map((category, index) => (

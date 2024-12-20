@@ -4,12 +4,11 @@ import dogImage from './pexels-jenna-hamra-248942-29693515.jpg'; // Make sure th
 
 function AwarenessSection() {
   const paragraphText = `
-    Animal welfare is a vital aspect of ensuring that all animals live healthy, safe, and happy lives.
-                           It involves providing proper care, nutrition,                   and shelter, as well as protecting animals from cruelty
-    and exploitation. Supporting animal welfare means advocating for ethical treatment,    promoting adoption
-    over buying from breeders,                              and ensuring animals are treated with respect and dignity. By raising awareness,
-              we can create a better world for our pets and wildlife alike.                 Join us in supporting animal welfare and making
-    a positive impact on the lives of animals everywhere.
+    Le bien-être animal est un aspect essentiel pour garantir que tous les animaux vivent une vie saine, sûre et heureuse.
+                           Il s’agit de fournir des soins et une nutrition appropriés,                   et un abri, ainsi que la protection des animaux contre la cruauté et l'exploitation. Soutenir le bien-être animal signifie défendre un traitement éthique,    promouvoir l'adoption
+plutôt que l'achat auprès des éleveurs,                              and s'assurer que les animaux sont treLe bien-être animal est un aspect essentiel pour garantir que tous les animaux vivent une vie saine, sûre et heureuse dans le respect et la dignité. En sensibilisant,
+              nous pouvons créer un monde meilleur pour nos animaux de compagnie et la faune.                 Rejoignez-nous pour soutenir le bien-être animal et faire
+    un impact positif sur la vie des animaux partout dans le monde.
   `;
 
   return (
@@ -27,7 +26,7 @@ function AwarenessSection() {
           </div>
           {/* Text on the right */}
           <div className="col-lg-6">
-            <h2 className="animated-heading">Animal Welfare Awareness</h2>
+            <h2 className="animated-heading">Sensibilisation au bien-être animal</h2>
             <p className="styled-paragraph">
   {paragraphText.split('').map((char, index) => (
     <span
