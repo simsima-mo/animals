@@ -4,8 +4,8 @@
   top: 0;
   width: 100%; /* Full width */
   z-index: 1000; /* Ensure it stays on top of other elements */
-  background-color: rgba(255, 192, 203, 0.8); /* Transparent pink */
-  color: #343a40;
+  background-color: rgba(248, 191, 122, 0.989); /* Transparent pink */
+  color: #000000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px); /* Blur effect for polished look */
   transition: background-color 0.3s ease; /* Smooth background transition */
@@ -13,14 +13,14 @@
 }
 
 .navbar.scrolled {
-  background-color: rgba(255, 192, 203, 0.9); /* Less transparency on scroll */
+  background-color: rgba(248, 191, 122, 0.989); /* Less transparency on scroll */
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  color: #343a40;
+  color: #000000;
 }
 
 .navbar-logo .logo-icon {
@@ -58,15 +58,15 @@
 }
 
 .dark-mode .navbar  {
-  background-color: rgba(34, 34, 34, 0.8); /* Dark transparent background */
-  color: pink;
+  background-color: rgb(0, 0, 0); /* Dark transparent background */
+  color: rgba(248, 191, 122, 0.989);
 }
 
 .dark-mode .navbar-logo {
-  color: pink;
+  color: rgba(248, 191, 122, 0.989);
 }
 .dark-mode .brand-name{
-  color: pink;
+  color: rgba(248, 191, 122, 0.989);
 
 }
 .dark-mode .navbar.scrolled {
@@ -74,11 +74,11 @@
 }
 
 .dark-mode .footer{
-  background-color: rgba(34, 34, 34, 0.8);
+  background-color: rgb(0, 0, 0);
 }
 .footer {
-  background-color: pink;
-  color: #fff;
+  background-color: rgba(248, 191, 122, 0.989);
+  color: black;
   padding: 2rem 1rem;
   text-align: center;
 }
@@ -101,13 +101,13 @@
 }
 
 .footer-social a {
-  color: #fff;
+  color: black;
   text-decoration: none;
   font-size: 1.1rem;
 }
 
 .footer-social a:hover {
-  color: #f39c12; /* Gold color for hover */
+  color: white; /* Gold color for hover */
 }
 
 .footer-social i {

@@ -1,50 +1,100 @@
 import React, { useState } from "react";
+import "./PaymentForm.css";
+import { useNavigate } from "react-router-dom";
 
-const PaymentForm = () => {
+const PaymentPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    email: "",
     cardNumber: "",
     expirationDate: "",
     securityCode: "",
     cardName: "",
-    useShippingAddress: true,
     paymentMethod: "creditCard",
   });
+  const [error, setError] = useState(""); // Pour afficher un message d'erreur
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Logique pour traiter le formulaire
-    console.log("Données du formulaire :", formData);
+
+    // Vérification si tous les champs sont remplis
+    if (
+      !formData.email ||
+      !formData.cardNumber ||
+      !formData.expirationDate ||
+      !formData.securityCode ||
+      !formData.cardName
+    ) {
+      setError("Veuillez remplir tous les champs avant de continuer.");
+      return;
+    }
+
+    // Réinitialiser le message d'erreur si tout est valide
+    setError("");
+    navigate("/congratulations"); // Redirige vers la page Congratulations
   };
 
   return (
-    <div style={{ backgroundColor: "darkseagreen", padding: "20px", borderRadius: "8px" }}>
-      <h2>Paiement</h2>
-      <p>Toutes les transactions sont sécurisées et chiffrées.</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="radio"
-            id="creditCard"
-            name="paymentMethod"
-            value="creditCard"
-            checked={formData.paymentMethod === "creditCard"}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="creditCard">Carte de crédit</label>
-          <img src="visa-logo.png" alt="Visa" style={{ marginLeft: "10px" }} />
-          <img src="mastercard-logo.png" alt="Mastercard" style={{ marginLeft: "5px" }} />
+    <div className="payment-container">
+      <form className="payment-form" onSubmit={handleSubmit}>
+        <div className="payment-method">
+          <h1 style={{ color: "rgba(137, 67, 10, 0.989)" }}>Paiement</h1>
+          <p>Merci pour votre achat ! Veuillez compléter les détails de paiement.</p>
+          <h2 style={{ color: "rgba(248, 191, 122, 0.989)", fontWeight: "bolder" }}>
+            Méthode de paiement
+          </h2>
+          <div className="payment-option">
+            <input
+              type="radio"
+              id="creditCard"
+              name="paymentMethod"
+              value="creditCard"
+              checked={formData.paymentMethod === "creditCard"}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="creditCard">Carte de Crédit</label>
+          </div>
+          <div className="payment-option">
+            <input
+              type="radio"
+              id="paypal"
+              name="paymentMethod"
+              value="paypal"
+              checked={formData.paymentMethod === "paypal"}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="paypal">PayPal</label>
+          </div>
         </div>
 
         {formData.paymentMethod === "creditCard" && (
-          <>
+          <div className="card-details">
+            <h2 style={{ color: "rgba(248, 191, 122, 0.989)", fontWeight: "bolder" }}>
+              Détails de la carte
+            </h2>
+
+            {/* Champ Email */}
+            <div>
+              <label htmlFor="email">Adresse Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="exemple@domaine.com"
+                required
+              />
+            </div>
+
             <div>
               <label htmlFor="cardNumber">Numéro de carte</label>
               <input
@@ -53,13 +103,13 @@ const PaymentForm = () => {
                 name="cardNumber"
                 value={formData.cardNumber}
                 onChange={handleInputChange}
-                placeholder="Saisissez un numéro de carte"
+                placeholder="1234 5678 9012 3456"
+                required
               />
             </div>
-
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div className="input-group">
               <div>
-                <label htmlFor="expirationDate">Date d'expiration (MM/AA)</label>
+                <label htmlFor="expirationDate">Date d'expiration</label>
                 <input
                   type="text"
                   id="expirationDate"
@@ -67,6 +117,7 @@ const PaymentForm = () => {
                   value={formData.expirationDate}
                   onChange={handleInputChange}
                   placeholder="MM/AA"
+                  required
                 />
               </div>
               <div>
@@ -78,10 +129,10 @@ const PaymentForm = () => {
                   value={formData.securityCode}
                   onChange={handleInputChange}
                   placeholder="CVV"
+                  required
                 />
               </div>
             </div>
-
             <div>
               <label htmlFor="cardName">Nom sur la carte</label>
               <input
@@ -90,55 +141,29 @@ const PaymentForm = () => {
                 name="cardName"
                 value={formData.cardName}
                 onChange={handleInputChange}
-                placeholder="Entrez votre nom tel qu’il est écrit sur votre carte"
+                placeholder="John Doe"
+                required
               />
             </div>
-
-            <div>
-              <input
-                type="checkbox"
-                id="useShippingAddress"
-                name="useShippingAddress"
-                checked={formData.useShippingAddress}
-                onChange={handleInputChange}
-              />
-              <label htmlFor="useShippingAddress">
-                Utiliser l'adresse d'expédition comme adresse de facturation
-              </label>
-            </div>
-          </>
+          </div>
         )}
 
-        <div>
-          <input
-            type="radio"
-            id="paypal"
-            name="paymentMethod"
-            value="paypal"
-            checked={formData.paymentMethod === "paypal"}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="paypal">PayPal</label>
-        </div>
+        {/* Message d'erreur */}
+        {error && <p className="error-message">{error}</p>}
 
-        <div>
-          <input type="checkbox" id="terms" name="terms" required />
-          <label htmlFor="terms">
-            J'ai lu et j'accepte la{" "}
-            <a href="/policy" target="_blank" rel="noopener noreferrer">
-              politique d'expédition
-            </a>{" "}
-            et la{" "}
-            <a href="/refund-policy" target="_blank" rel="noopener noreferrer">
-              politique de remboursement
-            </a>.
-          </label>
-        </div>
-
-        <button type="submit">Payer</button>
+        <button
+          style={{
+            borderRadius: "15px",
+            background: "linear-gradient(to right, rgba(255, 212, 160, 0.989), rgba(137, 67, 10, 0.989))",
+          }}
+          type="submit"
+          className="submit-btn"
+        >
+          Confirmer le paiement
+        </button>
       </form>
     </div>
   );
 };
 
-export default PaymentForm;
+export default PaymentPage;

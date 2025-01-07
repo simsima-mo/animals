@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const AuthPage = () => {
+const AuthPage = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [formErrors, setFormErrors] = useState({});
-  const navigate = useNavigate()
+  const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
@@ -41,82 +42,97 @@ const AuthPage = () => {
     }
   };
 
-  const handleLoginSubmit = async (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
+    
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
     const errors = {};
-
-
-    try {
-      const response = await axios.get("http://localhost/api_dog.php")
-      console.log(response.data);
-
-    } catch (error) {
-      console.log(error);
-    }
-
+  
+    // Validation des champs
     if (!email) {
-      errors.email = "Email address is required.";
+      errors.email = "L'adresse email est requise.";
     } else if (!validateEmail(email)) {
-      errors.email = "Please enter a valid email address.";
+      errors.email = "Veuillez entrer une adresse email valide.";
     }
-
+  
     if (!password) {
-      errors.password = "Password is required.";
+      errors.password = "Le mot de passe est requis.";
     }
-
+  
+    // Mise à jour des erreurs
     setFormErrors(errors);
-
+  
+    // Si aucune erreur, vérifier les informations de connexion localement
     if (Object.keys(errors).length === 0) {
-      alert("Login successful!");
+      // Exemple de données d'utilisateur (vous pouvez les remplacer par des données locales ou une logique de vérification différente)
+      const mockUser = {
+        email: "user@example.com",
+        password: "password123",
+      };
+  
+      if (email === mockUser.email && password === mockUser.password) {
+        // Si les informations sont valides
+        onLogin(true); // Mettre à jour l'état de connexion
+        const redirectTo = location.state?.redirectTo || "/payment"; // Page de redirection (par défaut vers paiement)
+        navigate(redirectTo);
+      } else {
+        alert("Identifiants invalides. Veuillez réessayer.");
+      }
+    } else {
+      alert("Veuillez remplir tous les champs correctement.");
     }
   };
+  
 
-  const handleSignUpSubmit = async (e) => {
+  const handleSignUpSubmit = (e) => {
     e.preventDefault();
+    
     const firstName = e.target.firstName.value.trim();
     const lastName = e.target.lastName.value.trim();
     const email = e.target.email.value.trim();
     const password = e.target.password.value.trim();
     const errors = {};
-
-
+  
+    // Validation des champs
     if (!firstName) {
-      errors.firstName = "First name is required.";
+      errors.firstName = "Le prénom est requis.";
     }
     if (!lastName) {
-      errors.lastName = "Last name is required.";
+      errors.lastName = "Le nom est requis.";
     }
     if (!email) {
-      errors.email = "Email address is required.";
+      errors.email = "L'adresse email est requise.";
     } else if (!validateEmail(email)) {
-      errors.email = "Please enter a valid email address.";
+      errors.email = "Veuillez entrer une adresse email valide.";
     }
     if (!password) {
-      errors.password = "Password is required.";
+      errors.password = "Le mot de passe est requis.";
     } else if (!validatePassword(password)) {
       errors.password = "Votre mot de passe ne remplit pas les conditions demandées.";
     }
-
+  
+    // Mise à jour des erreurs
     setFormErrors(errors);
-
+  
+    // Si aucune erreur, naviguer vers la page de paiement
     if (Object.keys(errors).length === 0) {
-      
-    try {
-      // const response = await axios.post("http://localhost/api_dog.php", {name, email, adresse})
-      navigate("/payment")
-      alert("Account created successfully!");
-      // console.log(response.data);
-    } catch (error) {
-      console.log(error);
+      // عند النجاح في التحقق من البيانات
+      // تنفيذ عملية التسجيل هنا
+  
+      // نستخدم `navigate` للتوجيه
+      if (cart.length === 0) {
+        // إذا كانت السلة فارغة
+        alert("Votre compte a été créé avec succès, vous êtes maintenant redirigé vers la page d'accueil.");
+        navigate("/"); // التوجيه إلى الصفحة الرئيسية
+      } else {
+        // إذا كانت السلة تحتوي على منتجات، لا نقوم بالتوجيه إلى الصفحة الرئيسية
+        alert("Votre compte a été créé avec succès !");
+        navigate("/cart"); // أو أي صفحة أخرى حسب الحاجة
+      }
     }
-      
-    } else {
-      // Si des erreurs sont présentes, informer l'utilisateur
-      alert("Please fill in all required fields correctly.");
-  }
   };
+  
 
   const inputStyle = {
     width: "100%",
@@ -126,14 +142,10 @@ const AuthPage = () => {
     borderRadius: "4px",
   };
 
- 
-
   const errorStyle = { color: "red", fontSize: "0.9em", marginTop: "5px" };
 
-  const infoStyle = { color: "grey ", fontSize: "0.9em", marginTop: "5px" };
-
   const buttonStyle = {
-    background: "linear-gradient(to right, pink, purple)",
+    background: "linear-gradient(to right, rgba(255, 212, 160, 0.989), rgba(137, 67, 10, 0.989))",
     color: "#fff",
     border: "none",
     borderRadius: "15px",
@@ -146,154 +158,216 @@ const AuthPage = () => {
 
   return (
     <div
-      style={{
-        maxWidth: "400px",
-        margin: "50px auto",
-        padding: "20px",
-        backdropFilter: "blur(8px)",
-        borderRadius: "2px 35px 2px 35px",
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
-      }}
-    >
-      {!isForgotPassword ? (
-        <>
-          <div style={{ display: "flex", justifyContent: "space-between",  gap: "10px", marginBottom: "20px" }}>
-            <button
-              onClick={() => {
-                setFormErrors({});
-                setIsLogin(true);
-              }}
-              style={{
-                ...buttonStyle,
-                background: isLogin ? "linear-gradient(to right, pink, purple)" : "#f8f9fa",
-                color: isLogin ? "#fff" : "#333",
-              }}
-            >
-              Connectez-moi
-            </button>
-            <button
-              onClick={() => {
-                setFormErrors({});
-                setIsLogin(false);
-              }}
-              style={{
-                ...buttonStyle,
-                background: !isLogin ? "linear-gradient(to right, pink, purple)" : "#f8f9fa",
-                color: !isLogin ? "#fff" : "#333",
-                
-              }}
-            >
-              crée un compt
-            </button>
-          </div>
+    style={{
+      maxWidth: "400px",
+      margin: "50px auto",
+      padding: "20px",
+      backdropFilter: "blur(8px)",
+      borderRadius: "2px 35px 2px 35px",
+      backgroundColor: "rgba(255, 255, 255, 0.2)",
+    }}
+  >
+    {!isForgotPassword ? (
+      <>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: "10px",
+            marginBottom: "20px",
+          }}
+        >
+          <button
+            onClick={() => {
+              setFormErrors({});
+              setIsLogin(true);
+            }}
+            style={{
+              ...buttonStyle,
+              background: isLogin
+                ? "linear-gradient(to right, rgba(255, 212, 160, 0.989), rgba(137, 67, 10, 0.989))"
+                : "#f8f9fa",
+              color: isLogin ? "#fff" : "#333",
+            }}
+          >
+            Connectez-moi
+          </button>
+          <button
+            onClick={() => {
+              setFormErrors({});
+              setIsLogin(false);
+            }}
+            style={{
+              ...buttonStyle,
+              background: !isLogin
+                ? "linear-gradient(to right, rgba(255, 212, 160, 0.989), rgba(137, 67, 10, 0.989))"
+                : "#f8f9fa",
+              color: !isLogin ? "#fff" : "#333",
+            }}
+          >
+            Crée un compte
+          </button>
+        </div>
 
-          {isLogin ? (
-            <form onSubmit={handleLoginSubmit}>
-              <h2>Je suis déjà client</h2>
-              <div style={{ marginBottom: "15px" }}>
-                <label>Adresse email</label>
-                <input name="email" type="email" placeholder="Adresse email" style={inputStyle} />
-                {formErrors.email && <p style={errorStyle}>{formErrors.email}</p>}
-              </div>
-              <div style={{ marginBottom: "15px", position: "relative" }}>
-                <label>Mot de passe</label>
-                <input
-                  name="password"
-                  type={passwordVisible ? "text" : "password"}
-                  placeholder="Mot de passe"
-                  style={inputStyle}
-                />
-                <span
-                  onClick={togglePasswordVisibility}
-                  style={{
-                    position: "absolute",
-                    right: "10px",
-                    top: "35px",
-                    cursor: "pointer",
-                    color: "#555",
-                  }}
-                >
-                  <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
-                </span>
-                {formErrors.password && <p style={errorStyle}>{formErrors.password}</p>}
-              </div>
-              <button type="submit" style={buttonStyle}>
-              Connectez-moi
-              </button>
-              <p
-                style={{ textAlign: "center", marginTop: "10px", cursor: "pointer", color: "purple" }}
-                onClick={() => setIsForgotPassword(true)}
+        {isLogin ? (
+          <form onSubmit={handleLoginSubmit}>
+            <h2 style={{ textAlign: "center", color : " rgba(137, 67, 10, 0.989)"}}>Je suis déjà client</h2>
+            <div style={{ marginBottom: "15px" }}>
+              <label>Adresse email</label>
+              <input
+                name="email"
+                type="email"
+                placeholder="Adresse email"
+                style={inputStyle}
+              />
+              {formErrors.email && (
+                <p style={errorStyle}>{formErrors.email}</p>
+              )}
+            </div>
+            <div style={{ marginBottom: "15px", position: "relative" }}>
+              <label>Mot de passe</label>
+              <input
+                name="password"
+                type={passwordVisible ? "text" : "password"}
+                placeholder="Mot de passe"
+                style={inputStyle}
+              />
+              <span
+                onClick={togglePasswordVisibility}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "35px",
+                  cursor: "pointer",
+                  color: "#555",
+                }}
               >
-                Mot de passe oublié?
-              </p>
-            </form>
-          ) : (
-            <form onSubmit={handleSignUpSubmit}>
-              <h2>Nouveau client</h2>
-              <div style={{ marginBottom: "15px" }}>
-                <label>Prénom</label>
-                <input name="firstName" type="text" placeholder="Prénom" style={inputStyle} />
-                {formErrors.firstName && <p style={errorStyle}>{formErrors.firstName}</p>}
-              </div>
-              <div style={{ marginBottom: "15px" }}>
-                <label>Nom de famille</label>
-                <input name="lastName" type="text" placeholder="Nom de famille" style={inputStyle} />
-                {formErrors.lastName && <p style={errorStyle}>{formErrors.lastName}</p>}
-              </div>
-              <div style={{ marginBottom: "15px" }}>
-                <label>Adresse email</label>
-                <input name="email" type="email" placeholder="Adresse email" style={inputStyle} />
-                {formErrors.email && <p style={errorStyle}>{formErrors.email}</p>}
-              </div>
-              <div style={{ marginBottom: "15px", position: "relative" }}>
-                <label>Mot de passe</label>
-                <input
-                  name="password"
-                  type={passwordVisible ? "text" : "password"}
-                  placeholder="Mot de passe"
-                  style={inputStyle}
+                <FontAwesomeIcon
+                  icon={passwordVisible ? faEye : faEyeSlash}
                 />
-                <span
-                  onClick={togglePasswordVisibility}
-                  style={{
-                    position: "absolute",
-                    right: "10px",
-                    top: "35px",
-                    cursor: "pointer",
-                    color: "#555",
-                  }}
-                >
-                  <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} />
-                </span>
-                <p style={infoStyle}>
-                8 caractères minimum. Doit inclure au moins une lettre majuscule, une lettre minuscule,
-                 un chiffre et un caractère spécial.
-                </p>
-                {formErrors.password && <p style={errorStyle}>{formErrors.password}</p>}
-              </div>
-              <button type="submit" style={buttonStyle}   >
+              </span>
+              {formErrors.password && (
+                <p style={errorStyle}>{formErrors.password}</p>
+              )}
+            </div>
+            <button type="submit" style={buttonStyle}>
+              Connectez-moi
+            </button>
+            <p
+              style={{
+                textAlign: "center",
+                marginTop: "10px",
+                cursor: "pointer",
+                color: "rgba(137, 67, 10, 0.989)",
+              }}
+              onClick={() => setIsForgotPassword(true)}
+            >
+              Mot de passe oublié?
+            </p>
+          </form>
+        ) : (
+          <form onSubmit={handleSignUpSubmit}>
+            <h2 style={{ textAlign: "center" , color : " rgba(137, 67, 10, 0.989)"}}>Nouveau client</h2>
+            <div style={{ marginBottom: "15px" }}>
+              <label>Prénom</label>
+              <input
+                name="firstName"
+                type="text"
+                placeholder="Prénom"
+                style={inputStyle}
+              />
+              {formErrors.firstName && (
+                <p style={errorStyle}>{formErrors.firstName}</p>
+              )}
+            </div>
+            <div style={{ marginBottom: "15px" }}>
+              <label>Nom de famille</label>
+              <input
+                name="lastName"
+                type="text"
+                placeholder="Nom de famille"
+                style={inputStyle}
+              />
+              {formErrors.lastName && (
+                <p style={errorStyle}>{formErrors.lastName}</p>
+              )}
+            </div>
+            <div style={{ marginBottom: "15px" }}>
+              <label>Adresse email</label>
+              <input
+                name="email"
+                type="email"
+                placeholder="Adresse email"
+                style={inputStyle}
+              />
+              {formErrors.email && (
+                <p style={errorStyle}>{formErrors.email}</p>
+              )}
+            </div>
+            <div style={{ marginBottom: "15px", position: "relative" }}>
+              <label>Mot de passe</label>
+              <input
+                name="password"
+                type={passwordVisible ? "text" : "password"}
+                placeholder="Mot de passe"
+                style={inputStyle}
+              />
+              <span
+                onClick={togglePasswordVisibility}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "35px",
+                  cursor: "pointer",
+                  color: "#555",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={passwordVisible ? faEye : faEyeSlash}
+                />
+              </span>
+              <p style={{ color: "grey", fontSize: "0.9em", marginTop: "5px" }}>
+                8 caractères minimum. Doit inclure au moins une lettre majuscule,
+                une lettre minuscule, un chiffre et un caractère spécial.
+              </p>
+              {formErrors.password && (
+                <p style={errorStyle}>{formErrors.password}</p>
+              )}
+            </div>
+            <button type="submit" style={buttonStyle}>
               Inscrivez-moi
-              </button>
-            </form>
+            </button>
+          </form>
           )}
         </>
       ) : (
         <form onSubmit={handleForgotPasswordSubmit}>
           <h2>Mot de passe oublié?</h2>
           <p>
-          Aucun problème – veuillez saisir l’adresse e-mail associée à votre compte et nous vous enverrons 
-          un lien pour réinitialiser votre mot de passe.
+            Aucun problème – veuillez saisir l’adresse e-mail associée à votre
+            compte et nous vous enverrons un lien pour réinitialiser votre mot
+            de passe.
           </p>
           <div style={{ marginBottom: "15px" }}>
             <label>Adresse email</label>
-            <input name="email" type="email" placeholder="Adresse email" style={inputStyle} />
+            <input
+              name="email"
+              type="email"
+              placeholder="Adresse email"
+              style={inputStyle}
+            />
             {formErrors.email && <p style={errorStyle}>{formErrors.email}</p>}
           </div>
           <button type="submit" style={buttonStyle}>
-          Réinitialiser le mot de passe
+            Réinitialiser le mot de passe
           </button>
           <p
-            style={{ textAlign: "center", marginTop: "10px", cursor: "pointer", color: "purple" }}
+            style={{
+              textAlign: "center",
+              marginTop: "10px",
+              cursor: "pointer",
+              color: "purple",
+            }}
             onClick={() => setIsForgotPassword(false)}
           >
             &laquo; Retour à la connexion

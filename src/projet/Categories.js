@@ -40,7 +40,7 @@ function Categories() {
           style={{
             fontSize: '2.5rem',
             fontWeight: 'bold',
-            color: 'purple', // Updated to pink
+            color: 'rgba(137, 67, 10, 0.989)', // Updated to pink
             letterSpacing: '1px',
           }}
         >
@@ -52,7 +52,7 @@ function Categories() {
               <div
                 className="category-item p-4 shadow rounded"
                 style={{
-                  backgroundColor: '#f8f9fa',
+                  backgroundColor: 'rgba(247, 222, 192, 0.989)',
                   transition: 'transform 0.3s',
                 }}
                 onMouseEnter={(e) =>
@@ -73,7 +73,7 @@ function Categories() {
                   style={{
                     fontSize: '1.5rem',
                     fontWeight: 'bold',
-                    color: '#ffc0cb', // Updated to pink
+                    color: 'rgba(137, 67, 10, 0.989)', // Updated to pink
                   }}
                 >
                   {category.title}

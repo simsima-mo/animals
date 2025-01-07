@@ -9,7 +9,7 @@
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: purple; /* Violet doux */
+  color: rgba(137, 67, 10, 0.989); /* Violet doux */
 }
 
 p {
@@ -54,7 +54,7 @@ p {
 }
 
 .cart-item-actions button:hover {
-  background-color: pink; /* Rose plus foncé */
+  background-color: rgba(248, 191, 122, 0.989); /* Rose plus foncé */
 }
 
 .cart-item-actions span {
@@ -68,7 +68,7 @@ p {
   margin-top: 20px;
   font-size: 1.5rem;
   font-weight: bold;
-  color: purple; /* Violet doux pour total */
+  color: rgba(137, 67, 10, 0.989); /* Violet doux pour total */
 }
 
 .checkout-button {
@@ -85,7 +85,7 @@ p {
 }
 
 .checkout-button:hover {
-  background-color: pink; /* Violet plus foncé */
+  background-color: rgba(248, 191, 122, 0.989); /* Violet plus foncé */
 }
 
 .cart-page p {

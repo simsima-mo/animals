@@ -151,7 +151,7 @@ return (
     {selectedProduct && (
       <div className="product-details-card">
         <button className="close-btn" onClick={handleCloseProductDetails}>
-          
+          X
         </button>
         <img src={selectedProduct.image} alt={selectedProduct.name} />
         <h3>{selectedProduct.name}</h3>

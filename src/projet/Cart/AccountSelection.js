@@ -1,16 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-const AccountSelection = ({ cart }) => {
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    navigate("/login");
+const AccountSelection = ({ onUserInfoProvided }) => {
+  const handleProvideInfo = () => {
+    // Simuler la saisie des informations utilisateur
+    onUserInfoProvided(); // Notifier que les informations sont fournies
   };
-
-  if (cart.length === 0) {
-    return null;
-  }
 
   return (
     <div className="account-selection">
@@ -57,10 +51,10 @@ const AccountSelection = ({ cart }) => {
           }
         `}
       </style>
-      <h2 style={{color : "#f39c12"}}>Créer un compte ou se connecter</h2>
-      <p>Veuillez vous connecter ou créer un compte pour continuer le paiement</p>
-      <button className="account-selection-button" onClick={handleLogin}>
-      Allez vous connecter
+      <h2 style={{ color: "#f39c12" }}>Créer un compte ou se connecter</h2>
+      <p>Veuillez saisir vos informations pour continuer vers le paiement.</p>
+      <button className="account-selection-button" onClick={handleProvideInfo}>
+        Saisir mes informations
       </button>
     </div>
   );

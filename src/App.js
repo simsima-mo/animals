@@ -7,9 +7,10 @@ import LoginSignup from "./projet/LoginSingup/LoginSingup";
 import ProductsCat from "./projet/product/ProductsCat";
 import ProductsDog from "./projet/product/ProductsDog";
 import Cart from "./projet/Cart/Cart";
-import PaymentForm from "./projet/PaymentForm";
+import Payment from "./projet/Payment"
 import "./projet/Cart/Cart.css";
 import "./projet/App.css"
+import Congratulations from "./projet/Congratulations";
 
 function App() {
   const [cart, setCart] = useState([]); // State to manage cart items
@@ -34,7 +35,8 @@ function App() {
               path="/cart"
               element={<Cart cart={cart} setCart={setCart} />}
             />
-            <Route path="/payment" element={<PaymentForm />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/congratulations" element={<Congratulations />} />
           </Routes>
         </div>
         <Footer />

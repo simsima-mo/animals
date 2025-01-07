@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import AccountSelection from "./AccountSelection"; // Import the AccountSelection component
+import { useNavigate } from "react-router-dom";
+import AccountSelection from "./AccountSelection";
 
 const Cart = ({ cart, setCart }) => {
+  const [isUserInfoProvided, setIsUserInfoProvided] = useState(false); // Suivi des informations utilisateur
   const [showAccountSelection, setShowAccountSelection] = useState(false);
+  const navigate = useNavigate();
 
-  // Calculate the total price
+  // Calcul du prix total
   const totalPrice = cart
     .reduce(
       (total, item) =>
@@ -13,14 +16,14 @@ const Cart = ({ cart, setCart }) => {
     )
     .toFixed(2);
 
-  // Remove item from cart
+  // Supprimer un article du panier
   const handleRemoveFromCart = (index) => {
     const newCart = [...cart];
-    newCart.splice(index, 1); // Removes the item at the specified index
-    setCart(newCart); // Update the cart state
+    newCart.splice(index, 1);
+    setCart(newCart);
   };
 
-  // Increase or decrease quantity of items in the cart
+  // Changer la quantité
   const handleQuantityChange = (index, action) => {
     const newCart = [...cart];
     if (action === "increase") {
@@ -32,10 +35,21 @@ const Cart = ({ cart, setCart }) => {
   };
 
   const handleCheckout = () => {
-    if (cart.length > 0) {
-      setShowAccountSelection(true); // Show the account selection section
+    if (cart.length === 0) {
+      alert(
+        "Veuillez ajouter des articles à votre panier avant de passer à la caisse."
+      );
+      return;
+    }else{
+      navigate("/payment");
+    }
+
+    if (isUserInfoProvided) {
+      // Si les informations de l'utilisateur sont déjà fournies
+      navigate("/payment");
     } else {
-      alert("Veuillez ajouter des articles à votre panier avant de passer à la caisse.");
+      // Sinon, afficher AccountSelection pour saisir les informations
+      setShowAccountSelection(true);
     }
   };
 
@@ -88,8 +102,15 @@ const Cart = ({ cart, setCart }) => {
         Passer à la caisse
       </button>
 
-      {/* Account selection section */}
-      {showAccountSelection && <AccountSelection cart={cart} />}
+      {/* Afficher AccountSelection si nécessaire */}
+      {showAccountSelection && (
+        <AccountSelection
+          onUserInfoProvided={() => {
+            setIsUserInfoProvided(true); // Marquer les informations comme fournies
+            navigate("/payment"); // Naviguer vers la page de paiement
+          }}
+        />
+      )}
     </div>
   );
 };

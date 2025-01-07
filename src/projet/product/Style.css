@@ -17,7 +17,7 @@ body {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: violet;
+  background-color: rgba(176, 108, 5, 0.989);
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -37,11 +37,11 @@ body {
 
 /* Category Buttons */
 .btn {
-  border: 1px solid pink;
+  border: 1px solid rgba(255, 212, 160, 0.989);
   padding: 12px 24px;
   margin-left: 5px;
   margin-bottom: 20px;
-  background-color: violet;
+  background-color: rgba(137, 67, 10, 0.989);
   color: white;
   border: none;
   border-radius: 6px;
@@ -56,9 +56,9 @@ body {
 
 
 .btn:hover {
-  background-color: pink;
+  background-color: rgba(255, 212, 160, 0.989);
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.7);
+  box-shadow: 0 6px 15px rgba(250, 184, 103, 0.7);
 }
 
 .btn:focus {
@@ -78,7 +78,7 @@ body {
 .product-card {
   background: #ffffff;
   padding: 20px;
-  border: 2px solid pink;
+  border: 2px solid rgba(137, 67, 10, 0.989);
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(238, 130, 238, 0.2);
   text-align: center;
@@ -113,7 +113,7 @@ body {
 }
 
 .product-card button {
-  background-color: violet;
+  background-color: rgba(137, 67, 10, 0.989);
   color: white;
   padding: 12px 24px;
   border: none;
@@ -125,7 +125,7 @@ body {
 }
 
 .product-card button:hover {
-  background-color: pink;
+  background-color: rgba(255, 212, 160, 0.989);
   transform: scale(1.05);
 }
 
@@ -185,13 +185,13 @@ body {
 .modal-details .price {
   font-size: 22px;
   font-weight: bold;
-  color: violet;
+  color: rgba(137, 67, 10, 0.989);
   margin-top: 15px;
 }
 
 .modal-details button {
   margin-top: 20px;
-  background-color: pink;
+  background-color: rgba(137, 67, 10, 0.989);
   color: white;
   padding: 10px 20px;
   border-radius: 6px;
@@ -296,7 +296,7 @@ body {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: violet;
+  color: rgba(137, 67, 10, 0.989);
 }
 
 .product-details-card p {
@@ -313,7 +313,7 @@ body {
 }
 
 .product-details-card button {
-  background-color: pink;
+  background-color: rgba(137, 67, 10, 0.989);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -324,7 +324,7 @@ body {
 }
 
 .product-details-card button:hover {
-  background-color: violet;
+  background-color: rgba(255, 212, 160, 0.989);
 }
 
 .product-page {
